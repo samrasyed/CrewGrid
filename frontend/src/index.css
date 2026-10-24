@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body { @apply bg-cream text-ink; }
+  h1, h2, h3, h4 { @apply font-display tracking-tight; }
+  :focus-visible { outline: 3px solid #1A1A1A; outline-offset: 2px; border-radius: 6px; }
+  ::selection { background: #FFC21A; color: #1A1A1A; }
+}
+
+@layer components {
+  /* faint zine dot grid */
+  .dot-grid { background-image: radial-gradient(rgba(26, 26, 26, 0.07) 1px, transparent 1px); background-size: 24px 24px; }
+
+  /* surfaces: plain cards are paper + ink border; .sticker adds the hard shadow (use sparingly) */
+  .card { @apply rounded-xl border-2 border-ink bg-paper; }
+  .sticker { @apply rounded-xl border-2 border-ink bg-paper shadow-hard; }
+  .rule { @apply border-t-2 border-ink; }
+
+  .input { @apply w-full rounded-lg border-2 border-ink bg-paper px-3 py-2 text-sm text-ink outline-none placeholder:text-ink-mute focus:shadow-hard-sm disabled:bg-cream disabled:text-ink-mute; }
+  .label { @apply mb-1 block text-xs font-semibold uppercase tracking-wider text-ink-soft; }
+  .eyebrow { @apply text-xs font-bold uppercase tracking-[0.18em] text-ink-soft; }
+
+  .btn { @apply inline-flex items-center justify-center gap-1.5 rounded-lg px-3.5 py-2 text-sm font-semibold transition-transform disabled:cursor-not-allowed disabled:opacity-50; }
+  .btn-primary { @apply btn border-2 border-ink bg-tomato text-ink shadow-hard-sm hover:-translate-y-px hover:shadow-hard active:translate-y-0 active:shadow-none; }
+  .btn-ghost { @apply btn border-2 border-ink bg-paper text-ink hover:bg-cream-dark; }
+  .btn-danger { @apply btn border-2 border-ink bg-paper text-tomato-ink hover:bg-tomato/15; }
+  .link { @apply font-semibold text-ink underline decoration-tomato decoration-2 underline-offset-4 hover:decoration-ink; }
+
+  .tab { @apply whitespace-nowrap border-b-[3px] px-3 pb-2.5 text-sm font-semibold; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+}
